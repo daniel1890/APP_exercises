@@ -1,4 +1,4 @@
-package ex_insertion_sort;
+package ex_sorting;
 
 public class InsertionSorter extends Sorter{
     public InsertionSorter(SortBehaviour sortBehaviour) {

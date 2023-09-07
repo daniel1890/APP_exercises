@@ -1,7 +1,7 @@
 import ex2_2.CalculateFactorial;
 import ex2_3.CalculateSum;
 import ex_2_4.ReturnNBitsOfBinaryRepresentation;
-import ex_insertion_sort.*;
+import ex_sorting.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,8 +30,10 @@ public class Main {
         int[] toSortArray = new int[]{8, 6, 0, 7, 5, 3, 1};
         Sorter insertionSorter = new InsertionSorter(new InsertionSort());
         Sorter mergeSorter = new MergeSorter(new MergeSort());
+        Sorter quickSorter = new QuickSorter(new QuickSort());
 
         insertionSorter.sort(toSortArray);
         mergeSorter.sort(toSortArray);
+        quickSorter.sort(toSortArray);
     }
 }

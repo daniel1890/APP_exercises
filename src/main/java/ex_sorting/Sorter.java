@@ -1,7 +1,7 @@
-package ex_insertion_sort;
+package ex_sorting;
 
 public abstract class Sorter {
-    SortBehaviour sortBehaviour;
+    private SortBehaviour sortBehaviour;
 
     public void sort(int[] arr) {
         sortBehaviour.sort(arr);

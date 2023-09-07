@@ -1,4 +1,4 @@
-package ex_insertion_sort;
+package ex_sorting;
 
 import java.util.Arrays;
 

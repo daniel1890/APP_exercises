@@ -1,4 +1,4 @@
-package ex_insertion_sort;
+package ex_sorting;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MergeSortTest {
 
-    private MergeSort sut;
+    private SortBehaviour sut;
     private Sorter mergeSorter;
 
     @BeforeEach

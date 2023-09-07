@@ -1,19 +1,19 @@
-package ex_insertion_sort;
+package ex_sorting;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
-class InsertionSortTest {
-    private Sorter insertionSorter;
+class QuickSortTest {
+    private SortBehaviour sut;
+    private Sorter quickSorter;
 
     @BeforeEach
     void setUp() {
-        InsertionSort sut = new InsertionSort();
-        insertionSorter = new InsertionSorter(sut);
+        sut = new QuickSort();
+        quickSorter = new QuickSorter(sut);
     }
 
     @AfterEach
@@ -29,7 +29,7 @@ class InsertionSortTest {
         int[] sortedTestArray = new int[]{smallestNumber, 2, 3, 6, 8, 10, 19, 24, biggestNumber};
 
         // Act
-        insertionSorter.sort(unsortedTestArray);
+        quickSorter.sort(unsortedTestArray);
 
         // Assert
         assertEquals(smallestNumber, unsortedTestArray[0]);
@@ -46,7 +46,7 @@ class InsertionSortTest {
         int[] sortedTestArray = new int[]{smallestNumber, 1, 1, 1, 1, 1, biggestNumber};
 
         // Act
-        insertionSorter.sort(evenTestArray);
+        quickSorter.sort(evenTestArray);
 
         // Assert
         assertEquals(smallestNumber, evenTestArray[0]);
@@ -63,7 +63,7 @@ class InsertionSortTest {
         int[] sortedTestArray = new int[]{smallestNumber, 2, 3, 4, biggestNumber};
 
         // Act
-        insertionSorter.sort(decliningTestArray);
+        quickSorter.sort(decliningTestArray);
 
         // Assert
         assertEquals(smallestNumber, decliningTestArray[0]);
@@ -80,7 +80,7 @@ class InsertionSortTest {
         int[] sortedTestArray = new int[]{smallestNumber, 2, 3, 4, biggestNumber};
 
         // Act
-        insertionSorter.sort(growingTestArray);
+        quickSorter.sort(growingTestArray);
 
         // Assert
         assertEquals(smallestNumber, growingTestArray[0]);
