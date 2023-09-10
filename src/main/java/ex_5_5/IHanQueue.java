@@ -7,4 +7,5 @@ public interface IHanQueue<AnyType> {
     //or removal of the item from the front of the line
     AnyType getFront();
     //or access of the item at the front of the line
+    String toString();
 }

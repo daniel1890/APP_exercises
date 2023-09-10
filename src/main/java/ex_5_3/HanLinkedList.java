@@ -114,4 +114,27 @@ public class HanLinkedList<AnyType> implements IHanLinkedList<AnyType> {
             return (AnyType) current.getData();
         }
     }
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        if (this.head == null) {
+            result = new StringBuilder("Linked list is empty");
+        } else {
+            ListNode current = this.head;
+            int iterator = length;
+
+            result.append("Position ").append(iterator).append(" contains -> ").append(current.getData()).append("\n");
+
+            while (current.getNext() != null) {
+                iterator--;
+
+                current = current.getNext();
+                result.append("Position ").append(iterator).append(" contains -> ").append(current.getData()).append("\n");
+            }
+
+        }
+
+        return result.toString();
+    }
 }

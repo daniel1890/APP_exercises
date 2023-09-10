@@ -18,9 +18,27 @@ class BalancedSymbolCheckerTest {
     }
 
     @Test
-    void processStackSuccesfully() {
+    void processStackSuccesfullyOpenClose() {
         // Act
         sut.processStack("()[]{}");
+
+        // Assert
+        assertTrue(sut.isBalanced());
+    }
+
+    @Test
+    void processStackSuccesfullyOpenAllCloseAll() {
+        // Act
+        sut.processStack("({[]})");
+
+        // Assert
+        assertTrue(sut.isBalanced());
+    }
+
+    @Test
+    void processStackSuccesfullyClassSymbols() {
+        // Act
+        sut.processStack("{(){}(){}}");
 
         // Assert
         assertTrue(sut.isBalanced());

@@ -22,4 +22,8 @@ public class HanQueue<AnyType> implements IHanQueue<AnyType> {
     public AnyType getFront() {
         return this.linkedList.getFirst();
     }
+    @Override
+    public String toString() {
+        return this.linkedList.toString();
+    }
 }

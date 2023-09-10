@@ -2,7 +2,7 @@ package ex_5_6;
 
 import ex_5_4.HanStack;
 
-public class BalancedSymbolChecker<AnyType> {
+public class BalancedSymbolChecker<AnyType> implements IBalancedSymbolChecker<AnyType> {
     private final HanStack<AnyType> stack;
     public BalancedSymbolChecker() {
         this.stack = new HanStack<>();
@@ -22,13 +22,15 @@ public class BalancedSymbolChecker<AnyType> {
                         throw new RuntimeException("Call stack is empty: " + currentChar);
                     }
                     else {
-                        String poppedString = String.valueOf(stack.topAndPop());
+                        String poppedString = String.valueOf(stack.top());
                         Symbol poppedSymbol = Symbol.fromString(poppedString);
 
                         assert poppedSymbol != null;
                         if (symbol.getMatchingOpeningSymbol().getSymbol().compareTo(poppedSymbol.getSymbol()) != 0) {
                             throw new RuntimeException("Unbalanced symbols: " + poppedSymbol.getSymbol() + " + " + currentChar);
                         }
+
+                        stack.pop();
                     }
                 }
             }
@@ -39,20 +41,11 @@ public class BalancedSymbolChecker<AnyType> {
         }
     }
 
-    public void add(AnyType symbol) {
-        stack.push(symbol);
-    }
-
     public boolean isBalanced() {
         return stack.isEmpty();
     }
-
-    public void remove() {
-        stack.pop();
-    }
-
-    public AnyType peek() {
-        return stack.top();
+    public String toString() {
+        return stack.toString();
     }
 }
 

@@ -7,4 +7,5 @@ public interface IHanLinkedList<AnyType> {
     AnyType getLast();
     AnyType removeFirst();
     AnyType removeLast();
+    String toString();
 }

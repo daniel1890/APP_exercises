@@ -39,4 +39,8 @@ public class HanStack<AnyType> implements IHanStack<AnyType> {
             linkedList.removeFirst();
         }
     }
+
+    public String toString() {
+        return linkedList.toString();
+    }
 }
