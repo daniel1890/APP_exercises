@@ -23,6 +23,7 @@ import ex_5_5.HanQueue;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.PriorityQueue;
 
 public class Graph {
     public static final double INFINITY = Double.MAX_VALUE;
@@ -78,7 +79,48 @@ public class Graph {
         }
     }
 
-    public void dijkstra(String startName) { /* Figure 14.27 */ }
+    public void dijkstra(String startName) {
+        PriorityQueue<Path> pq = new PriorityQueue<>();
+
+        Vertex start = vertexMap.get(startName);
+
+        if (start == null) {
+            throw new NoSuchElementException( "Start vertex not found" );
+        }
+
+        clearAll();
+        pq.add(new Path(start, 0));
+        start.dist = 0;
+
+        int nodesSeen = 0;
+
+        while (!pq.isEmpty() && nodesSeen < vertexMap.size()) {
+            Path vrec = pq.remove();
+            Vertex v = vrec.dest;
+
+            if(v.scratch != 0) {
+                continue;
+            }
+
+            v.scratch = 1;
+            nodesSeen++;
+
+            for(Edge e : v.adj) {
+                Vertex w = e.dest;
+                double cvw = e.cost;
+
+                if(cvw < 0) {
+                    throw new GraphException("Graph has negative edges");
+                }
+
+                if(w.dist > v.dist + cvw) {
+                    w.dist = v.dist + cvw;
+                    w.prev = v;
+                    pq.add(new Path(w, w.dist));
+                }
+            }
+        }
+    }
 
     public void negative(String startName) { /* Figure 14.29 */ }
 
