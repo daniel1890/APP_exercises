@@ -31,6 +31,7 @@ public class TowerOfHanoiSolver implements ITowerOfHanoiSolver {
 
         startHanoi(n - 1, from, aux, to);
         to.push(from.topAndPop());
+        System.out.println(this.toString());
         startHanoi(n - 1, aux, to, from);
     }
 
