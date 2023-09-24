@@ -17,6 +17,9 @@ package ex_7_3;
 // and that graph satisfies properties needed by each
 // algorithm. Exceptions are thrown if errors are detected.
 
+import ex_5_3.HanLinkedList;
+import ex_5_5.HanQueue;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -47,7 +50,33 @@ public class Graph {
         }
     }
 
-    public void unweighted(String startName) { /* Figure 14.22 */ }
+    public void unweighted(String startName) {
+        clearAll();
+
+        Vertex start = vertexMap.get(startName);
+
+        if (start == null) {
+            throw new NoSuchElementException( "Start vertex not found" );
+        }
+
+        HanQueue<Vertex> queue = new HanQueue<>();
+        queue.enqueue(start);
+        start.dist = 0;
+
+        while (queue.getFront() != null) {
+            Vertex v = queue.dequeue();
+
+            for(Edge e : v.adj) {
+                Vertex w = e.dest;
+
+                if (w.dist == INFINITY) {
+                    w.dist = v.dist + 1;
+                    w.prev = v;
+                    queue.enqueue(w);
+                }
+            }
+        }
+    }
 
     public void dijkstra(String startName) { /* Figure 14.27 */ }
 
